@@ -15,6 +15,9 @@ public class InputController : MonoBehaviour , FlippeteInput.IPlayerInputActions
     
     public static event MoveAction OnMove;
     
+    public delegate void JumpAction();
+    public static event JumpAction OnJumping;
+    
     
     
     public static InputController Instance;
@@ -82,5 +85,12 @@ public class InputController : MonoBehaviour , FlippeteInput.IPlayerInputActions
             OnMove?.Invoke(context.ReadValue<Vector2>());
         if(context.canceled)
             OnMove?.Invoke(Vector2.zero);
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        
+        if(context.performed)
+            OnJumping?.Invoke();
     }
 }

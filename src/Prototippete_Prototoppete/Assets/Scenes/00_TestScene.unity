@@ -779,14 +779,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefaultNamespace.Player
   _speed: 2
-  _jumpForce: 5
   _centerPoint: {fileID: 1513569179}
   _groundCheckRange: 1
-  _smallGap: 0.1
-  _maxAngle: 20
+  _maxAngle: 30
   _gravityTime: 0.5
   _gravity: 2
   _gravityDirection: {x: 0, y: -1, z: 0}
+  _jumpForce: 2
 --- !u!4 &1581050970
 Transform:
   m_ObjectHideFlags: 0

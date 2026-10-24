@@ -145,6 +145,15 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
                     ""processors"": ""NormalizeVector2"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""127e4f09-2865-414b-8c7f-cfb02d8bf50b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -257,6 +266,17 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a56f471a-6d86-4b66-be2d-3860ccb59190"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -271,6 +291,7 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
         m_PlayerInput_TurnDown = m_PlayerInput.FindAction("TurnDown", throwIfNotFound: true);
         m_PlayerInput_Reset = m_PlayerInput.FindAction("Reset", throwIfNotFound: true);
         m_PlayerInput_Movement = m_PlayerInput.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerInput_Jump = m_PlayerInput.FindAction("Jump", throwIfNotFound: true);
     }
 
     ~@FlippeteInput()
@@ -357,6 +378,7 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_TurnDown;
     private readonly InputAction m_PlayerInput_Reset;
     private readonly InputAction m_PlayerInput_Movement;
+    private readonly InputAction m_PlayerInput_Jump;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerInput".
     /// </summary>
@@ -392,6 +414,10 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerInput/Movement".
         /// </summary>
         public InputAction @Movement => m_Wrapper.m_PlayerInput_Movement;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerInput/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_PlayerInput_Jump;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -436,6 +462,9 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         /// <summary>
@@ -465,6 +494,9 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         /// <summary>
@@ -547,5 +579,12 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMovement(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJump(InputAction.CallbackContext context);
     }
 }
