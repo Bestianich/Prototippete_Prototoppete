@@ -4,6 +4,7 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
     [SerializeField] private float _rotationAngle = 90;
+    [SerializeField] private Transform _rotationPivot;
     
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
@@ -30,7 +31,7 @@ public class CameraController : MonoBehaviour
     }
     public void TurnCamera(Vector3 direction)
     {
-        _camera.transform.RotateAround(transform.position, direction, _rotationAngle);
+        _camera.transform.RotateAround(_rotationPivot.position, direction, _rotationAngle);
     }
 
     public void ResetCamera()

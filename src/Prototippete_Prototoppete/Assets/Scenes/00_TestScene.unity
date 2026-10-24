@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   _camera: {fileID: 330585545}
   _rotationAngle: 90
+  _rotationPivot: {fileID: 1395579934}
 --- !u!4 &167144875
 Transform:
   m_ObjectHideFlags: 0
