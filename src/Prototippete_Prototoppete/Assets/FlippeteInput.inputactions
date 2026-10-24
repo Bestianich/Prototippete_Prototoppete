@@ -1,0 +1,115 @@
+{
+    "version": 1,
+    "name": "FlippeteInput",
+    "maps": [
+        {
+            "name": "CameraInput",
+            "id": "6a43ec20-7764-4416-9d1d-3cb797eafe50",
+            "actions": [
+                {
+                    "name": "TurnLeft",
+                    "type": "Button",
+                    "id": "3cc4ff86-9109-4a0f-9fce-25ba98ce8dcc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnRight",
+                    "type": "Button",
+                    "id": "37490a81-e968-4823-9f15-8d578b5bfec4",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnUp",
+                    "type": "Button",
+                    "id": "7c550962-1eef-4fee-9f8e-f3e6074ad86e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnDown",
+                    "type": "Button",
+                    "id": "d11e487b-6aca-4842-b1b2-39dc768bc499",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reset",
+                    "type": "Button",
+                    "id": "2a9e7a22-4447-44f1-91b4-3d837ec41b5e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cb0ea958-791c-4db3-bd78-438f2e536c27",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "56299ae9-86d8-494d-ae05-a9bfef96996b",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d02bb967-3387-4f85-9473-f0430fc55651",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "92e79a00-65d1-432b-9400-c926908734a0",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26239039-f87a-4a7e-a7de-f9fb96fdfee7",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
