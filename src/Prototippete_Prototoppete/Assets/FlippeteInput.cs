@@ -89,7 +89,7 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
     ""name"": ""FlippeteInput"",
     ""maps"": [
         {
-            ""name"": ""CameraInput"",
+            ""name"": ""PlayerInput"",
             ""id"": ""6a43ec20-7764-4416-9d1d-3cb797eafe50"",
             ""actions"": [
                 {
@@ -136,13 +136,22 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""5e3ceee0-46c1-46f5-8bdf-7c9f280c1c5f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": ""NormalizeVector2"",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""cb0ea958-791c-4db3-bd78-438f2e536c27"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -153,7 +162,7 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""56299ae9-86d8-494d-ae05-a9bfef96996b"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -164,7 +173,7 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d02bb967-3387-4f85-9473-f0430fc55651"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -175,7 +184,7 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""92e79a00-65d1-432b-9400-c926908734a0"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -193,24 +202,80 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
                     ""action"": ""Reset"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""6963e89c-b216-4bc8-a1c0-b4a06e5ce290"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d6b654d3-eb62-4b75-8b9c-d9891b10fa66"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1453fa67-13a3-4078-af21-66ea60e2a64b"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""8f85d37d-98b4-4525-bd38-30fa438326e9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""03e17675-0375-43ee-be79-d71050b02196"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // CameraInput
-        m_CameraInput = asset.FindActionMap("CameraInput", throwIfNotFound: true);
-        m_CameraInput_TurnLeft = m_CameraInput.FindAction("TurnLeft", throwIfNotFound: true);
-        m_CameraInput_TurnRight = m_CameraInput.FindAction("TurnRight", throwIfNotFound: true);
-        m_CameraInput_TurnUp = m_CameraInput.FindAction("TurnUp", throwIfNotFound: true);
-        m_CameraInput_TurnDown = m_CameraInput.FindAction("TurnDown", throwIfNotFound: true);
-        m_CameraInput_Reset = m_CameraInput.FindAction("Reset", throwIfNotFound: true);
+        // PlayerInput
+        m_PlayerInput = asset.FindActionMap("PlayerInput", throwIfNotFound: true);
+        m_PlayerInput_TurnLeft = m_PlayerInput.FindAction("TurnLeft", throwIfNotFound: true);
+        m_PlayerInput_TurnRight = m_PlayerInput.FindAction("TurnRight", throwIfNotFound: true);
+        m_PlayerInput_TurnUp = m_PlayerInput.FindAction("TurnUp", throwIfNotFound: true);
+        m_PlayerInput_TurnDown = m_PlayerInput.FindAction("TurnDown", throwIfNotFound: true);
+        m_PlayerInput_Reset = m_PlayerInput.FindAction("Reset", throwIfNotFound: true);
+        m_PlayerInput_Movement = m_PlayerInput.FindAction("Movement", throwIfNotFound: true);
     }
 
     ~@FlippeteInput()
     {
-        UnityEngine.Debug.Assert(!m_CameraInput.enabled, "This will cause a leak and performance issues, FlippeteInput.CameraInput.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerInput.enabled, "This will cause a leak and performance issues, FlippeteInput.PlayerInput.Disable() has not been called.");
     }
 
     /// <summary>
@@ -283,49 +348,54 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // CameraInput
-    private readonly InputActionMap m_CameraInput;
-    private List<ICameraInputActions> m_CameraInputActionsCallbackInterfaces = new List<ICameraInputActions>();
-    private readonly InputAction m_CameraInput_TurnLeft;
-    private readonly InputAction m_CameraInput_TurnRight;
-    private readonly InputAction m_CameraInput_TurnUp;
-    private readonly InputAction m_CameraInput_TurnDown;
-    private readonly InputAction m_CameraInput_Reset;
+    // PlayerInput
+    private readonly InputActionMap m_PlayerInput;
+    private List<IPlayerInputActions> m_PlayerInputActionsCallbackInterfaces = new List<IPlayerInputActions>();
+    private readonly InputAction m_PlayerInput_TurnLeft;
+    private readonly InputAction m_PlayerInput_TurnRight;
+    private readonly InputAction m_PlayerInput_TurnUp;
+    private readonly InputAction m_PlayerInput_TurnDown;
+    private readonly InputAction m_PlayerInput_Reset;
+    private readonly InputAction m_PlayerInput_Movement;
     /// <summary>
-    /// Provides access to input actions defined in input action map "CameraInput".
+    /// Provides access to input actions defined in input action map "PlayerInput".
     /// </summary>
-    public struct CameraInputActions
+    public struct PlayerInputActions
     {
         private @FlippeteInput m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public CameraInputActions(@FlippeteInput wrapper) { m_Wrapper = wrapper; }
+        public PlayerInputActions(@FlippeteInput wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "CameraInput/TurnLeft".
+        /// Provides access to the underlying input action "PlayerInput/TurnLeft".
         /// </summary>
-        public InputAction @TurnLeft => m_Wrapper.m_CameraInput_TurnLeft;
+        public InputAction @TurnLeft => m_Wrapper.m_PlayerInput_TurnLeft;
         /// <summary>
-        /// Provides access to the underlying input action "CameraInput/TurnRight".
+        /// Provides access to the underlying input action "PlayerInput/TurnRight".
         /// </summary>
-        public InputAction @TurnRight => m_Wrapper.m_CameraInput_TurnRight;
+        public InputAction @TurnRight => m_Wrapper.m_PlayerInput_TurnRight;
         /// <summary>
-        /// Provides access to the underlying input action "CameraInput/TurnUp".
+        /// Provides access to the underlying input action "PlayerInput/TurnUp".
         /// </summary>
-        public InputAction @TurnUp => m_Wrapper.m_CameraInput_TurnUp;
+        public InputAction @TurnUp => m_Wrapper.m_PlayerInput_TurnUp;
         /// <summary>
-        /// Provides access to the underlying input action "CameraInput/TurnDown".
+        /// Provides access to the underlying input action "PlayerInput/TurnDown".
         /// </summary>
-        public InputAction @TurnDown => m_Wrapper.m_CameraInput_TurnDown;
+        public InputAction @TurnDown => m_Wrapper.m_PlayerInput_TurnDown;
         /// <summary>
-        /// Provides access to the underlying input action "CameraInput/Reset".
+        /// Provides access to the underlying input action "PlayerInput/Reset".
         /// </summary>
-        public InputAction @Reset => m_Wrapper.m_CameraInput_Reset;
+        public InputAction @Reset => m_Wrapper.m_PlayerInput_Reset;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerInput/Movement".
+        /// </summary>
+        public InputAction @Movement => m_Wrapper.m_PlayerInput_Movement;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_CameraInput; }
+        public InputActionMap Get() { return m_Wrapper.m_PlayerInput; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -333,9 +403,9 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="CameraInputActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="PlayerInputActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(CameraInputActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(PlayerInputActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -343,11 +413,11 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="CameraInputActions" />
-        public void AddCallbacks(ICameraInputActions instance)
+        /// <seealso cref="PlayerInputActions" />
+        public void AddCallbacks(IPlayerInputActions instance)
         {
-            if (instance == null || m_Wrapper.m_CameraInputActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_CameraInputActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerInputActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerInputActionsCallbackInterfaces.Add(instance);
             @TurnLeft.started += instance.OnTurnLeft;
             @TurnLeft.performed += instance.OnTurnLeft;
             @TurnLeft.canceled += instance.OnTurnLeft;
@@ -363,6 +433,9 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
             @Reset.started += instance.OnReset;
             @Reset.performed += instance.OnReset;
             @Reset.canceled += instance.OnReset;
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
         }
 
         /// <summary>
@@ -371,8 +444,8 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="CameraInputActions" />
-        private void UnregisterCallbacks(ICameraInputActions instance)
+        /// <seealso cref="PlayerInputActions" />
+        private void UnregisterCallbacks(IPlayerInputActions instance)
         {
             @TurnLeft.started -= instance.OnTurnLeft;
             @TurnLeft.performed -= instance.OnTurnLeft;
@@ -389,15 +462,18 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
             @Reset.started -= instance.OnReset;
             @Reset.performed -= instance.OnReset;
             @Reset.canceled -= instance.OnReset;
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="CameraInputActions.UnregisterCallbacks(ICameraInputActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerInputActions.UnregisterCallbacks(IPlayerInputActions)" />.
         /// </summary>
-        /// <seealso cref="CameraInputActions.UnregisterCallbacks(ICameraInputActions)" />
-        public void RemoveCallbacks(ICameraInputActions instance)
+        /// <seealso cref="PlayerInputActions.UnregisterCallbacks(IPlayerInputActions)" />
+        public void RemoveCallbacks(IPlayerInputActions instance)
         {
-            if (m_Wrapper.m_CameraInputActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerInputActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -407,27 +483,27 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="CameraInputActions.AddCallbacks(ICameraInputActions)" />
-        /// <seealso cref="CameraInputActions.RemoveCallbacks(ICameraInputActions)" />
-        /// <seealso cref="CameraInputActions.UnregisterCallbacks(ICameraInputActions)" />
-        public void SetCallbacks(ICameraInputActions instance)
+        /// <seealso cref="PlayerInputActions.AddCallbacks(IPlayerInputActions)" />
+        /// <seealso cref="PlayerInputActions.RemoveCallbacks(IPlayerInputActions)" />
+        /// <seealso cref="PlayerInputActions.UnregisterCallbacks(IPlayerInputActions)" />
+        public void SetCallbacks(IPlayerInputActions instance)
         {
-            foreach (var item in m_Wrapper.m_CameraInputActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerInputActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_CameraInputActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerInputActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="CameraInputActions" /> instance referencing this action map.
+    /// Provides a new <see cref="PlayerInputActions" /> instance referencing this action map.
     /// </summary>
-    public CameraInputActions @CameraInput => new CameraInputActions(this);
+    public PlayerInputActions @PlayerInput => new PlayerInputActions(this);
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CameraInput" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInput" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="CameraInputActions.AddCallbacks(ICameraInputActions)" />
-    /// <seealso cref="CameraInputActions.RemoveCallbacks(ICameraInputActions)" />
-    public interface ICameraInputActions
+    /// <seealso cref="PlayerInputActions.AddCallbacks(IPlayerInputActions)" />
+    /// <seealso cref="PlayerInputActions.RemoveCallbacks(IPlayerInputActions)" />
+    public interface IPlayerInputActions
     {
         /// <summary>
         /// Method invoked when associated input action "TurnLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -464,5 +540,12 @@ public partial class @FlippeteInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnReset(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Movement" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMovement(InputAction.CallbackContext context);
     }
 }

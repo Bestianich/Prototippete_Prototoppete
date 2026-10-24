@@ -3,13 +3,19 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class InputController : MonoBehaviour , FlippeteInput.ICameraInputActions
+public class InputController : MonoBehaviour , FlippeteInput.IPlayerInputActions
 {
     public delegate void TurnCameraAction(Vector3 direction);
     public static event TurnCameraAction OnTurnCamera;
 
     public delegate void ResetCameraAction();
     public static event ResetCameraAction OnResetCamera;
+    
+    public delegate void MoveAction(Vector3 input);
+    
+    public static event MoveAction OnMove;
+    
+    
     
     public static InputController Instance;
 
@@ -30,26 +36,26 @@ public class InputController : MonoBehaviour , FlippeteInput.ICameraInputActions
         if (_controls == null)
         {
             _controls = new FlippeteInput();
-            _controls.CameraInput.SetCallbacks(this);
+            _controls.PlayerInput.SetCallbacks(this);
         }
-        _controls.CameraInput.Enable();
+        _controls.PlayerInput.Enable();
     }
 
     public void OnDisable()
     {
-        _controls.CameraInput.Disable();
+        _controls.PlayerInput.Disable();
     }
     
     public void OnTurnLeft(InputAction.CallbackContext context)
     {
         if (context.performed)
-            OnTurnCamera?.Invoke(new Vector3(0 , 0 , 1));
+            OnTurnCamera?.Invoke(new Vector3(0 , 0 , -1));
     }
 
     public void OnTurnRight(InputAction.CallbackContext context)
     {
         if (context.performed)
-            OnTurnCamera?.Invoke(new Vector3(0 , 0 , -1));
+            OnTurnCamera?.Invoke(new Vector3(0 , 0 , 1));
     }
 
     public void OnTurnUp(InputAction.CallbackContext context)
@@ -68,5 +74,13 @@ public class InputController : MonoBehaviour , FlippeteInput.ICameraInputActions
     {
         if(context.performed)
             OnResetCamera?.Invoke();
+    }
+
+    public void OnMovement(InputAction.CallbackContext context)
+    { 
+        if(context.performed)
+            OnMove?.Invoke(context.ReadValue<Vector2>());
+        if(context.canceled)
+            OnMove?.Invoke(Vector2.zero);
     }
 }
