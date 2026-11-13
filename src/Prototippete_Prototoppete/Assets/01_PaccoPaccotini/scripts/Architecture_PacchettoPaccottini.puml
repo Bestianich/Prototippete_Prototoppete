@@ -1,0 +1,121 @@
+﻿@startuml
+
+package "On Foot Logic"
+{
+
+    class PlayerData <<(S, red)>>
+    {
+        +float: PlayerSpeed { get; private set; }
+        +float: GroundCheckDistance { get; private set; }
+        +float: RotationSpeed { get; private set; }
+        +float: GrabRange { get; private set; }
+    }
+    
+    class PlayerController <<(M , lightblue)>>
+    {
+        -PlayerData: _playerData
+        -float: _currentSpeed
+        -Vector2: _movementInput
+        -Transform: _gravityCenter
+        -Transform: _grabSnapPoint
+        -IGrabbable: _currentGrabbedObject
+        -RigidBody: _rb
+        
+        +void GetPlayerMovementInput(InputAction.CallbackContext)
+        -void: Init()
+        -void: Move()
+        -bool: TryGrab(out IGrabbable)
+        -void: Grab(IGrabbable)
+        -void: Drop()
+        
+    }
+    
+    interface IGrabbable
+    {
+        +float: WeightOnPlayer { get; private set; }
+        +Transform: GrabbableTransform { get; private set; }
+        +void: OnGrab()
+        +void: OnDrop()
+    }
+    
+    class BoxData <<(S , red)>>
+    {
+        +float: Mass { get; private set; }
+        +float: WeightOnPlayer { get; private set; }
+        +int: MaxHealth { get; private set; }
+        +float: FragilityThreshold { get; private set;}
+        +float: MaxSafeHeight {get; private set;}
+    }
+    
+    
+    class Box <<(M , lightblue)>>
+    {
+        -BoxData: _boxData
+        -int: _currentHealth
+        -RigidBody: _rb
+        
+        -void: Init()
+        -void: OnCollisionEnter(Collision)
+        -void: DamageBox()
+        -void: HealBox()
+        -void: OnDamage()
+        -void: OnHeal()
+    }
+    
+    PlayerController -* PlayerData
+    PlayerController --o IGrabbable
+    
+    Box -* BoxData
+    Box --> IGrabbable : Implements
+
+}
+
+package "Car Logic"
+{
+    class CarData <<(S , red)>>
+    {
+    
+        +float: Mass { get; private set; }
+        +float: BaseAcceleration { get; private set; }
+        +float: MaxAcceleration { get; private set; }
+        +float: MaxNitro { get; private set; }
+        +float: NitroDepletionOverTime { get; private set; }
+        +float: BrakeForce { get; private set; }
+    }
+    
+    
+    
+    
+    class CarController <<(M , lightblue)>>
+    {
+        -CarData: _carData
+        -float: _currentAcceleration
+        -Vector2: _steerDirection
+        -List<Wheel>: _wheels
+        -RigidBody: _rb
+        
+        
+        +void: GetPlayerSteerDirection(InputAction.CallbackContext)
+        -void: Init()
+        -void: FixedUpdate()
+        -void: Brake()
+        -void: Nitro()
+    }
+    
+    class Wheel
+    {
+        +Transform: WheelTransform
+        +float: Radius
+        +float: SuspensionDistance
+        +float: SuspensionSpring
+        +float: Grip
+        +bool: CanSteer
+        +float: MaxSteerAngle
+        +void: ApplyPhysics(RigidBody)
+    }
+    
+    CarController -* CarData
+    CarController --* Wheel
+}
+
+@enduml
